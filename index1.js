@@ -28,13 +28,6 @@ const handleClick = (event) => {
     } else if (buttonInput === '=') {
         display.innerText = eval(display.innerText);
 
-
-
-
-
-
-
-
         //could add toLocaleString() above
     } else if (buttonInput === 'C') {
         display.innerText = '';
