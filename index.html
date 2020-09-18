@@ -32,7 +32,7 @@
 		<meta name="theme-color" content="#ffffff" />
 		<link rel="stylesheet" href="styles.css" />
 		<link
-			href="https://fonts.googleapis.com/css?family=VT323&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap"
 			rel="stylesheet"
 		/>
 	</head>
@@ -41,42 +41,38 @@
 		<h1 id="title">Basic Calculator</h1>
 		<div class="container">
 			<div class="display">
-				<p id="display"></p>
+				<p data-cy="display" id="display"></p>
 			</div>
 			<div class="buttons">
 				<div class="flex-row">
-					<button class="num">0</button>
-					<button class="num">1</button>
-					<button class="num">2</button>
-					<button class="add">+</button>
+					<button data-cy="0" class="num zero">0</button>
+					<button data-cy="1" class="num one">1</button>
+					<button data-cy="2" class="num two">2</button>
+					<button data-cy="+" class="add">+</button>
 				</div>
 				<div class="flex-row">
-					<button class="num">3</button>
-					<button class="num">4</button>
-					<button class="num">5</button>
-					<button class="subtract">-</button>
+					<button data-cy="3" class="num three">3</button>
+					<button data-cy="4" class="num four">4</button>
+					<button data-cy="5" class="num five">5</button>
+					<button data-cy="-" class="subtract">-</button>
 				</div>
 				<div class="flex-row">
-					<button class="num six">6</button>
-					<button class="num">7</button>
-					<button class="num">8</button>
-					<button class="multiply">x</button>
+					<button data-cy="6" class="num six">6</button>
+					<button data-cy="7" class="num seven">7</button>
+					<button data-cy="8" class="num eight">8</button>
+					<button data-cy="×" class="multiply">×</button>
 				</div>
 				<div class="flex-row">
-					<button class="num">9</button>
-					<button class="c">C</button>
-					<button class="equals">=</button>
-					<button class="divide">÷</button>
+					<button data-cy="9" class="num nine">9</button>
+					<button data-cy="C" class="c">C</button>
+					<button data-cy="=" class="equals">=</button>
+					<button data-cy="÷" class="divide">÷</button>
 				</div>
 			</div>
 		</div>
 		<footer>
 			<h2>A</h2>
-			<img
-				src="../Color-Selector/images/white-signature.png"
-				alt=""
-				class="sig"
-			/>
+			<img src="./sig-white..png" alt="david campbell signature" class="sig" />
 			<h2>App</h2>
 		</footer>
 		<div id="container1"></div>
