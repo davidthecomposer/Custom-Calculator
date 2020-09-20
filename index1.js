@@ -5,6 +5,8 @@ const easterEggs = {
 	69: "nice.",
 	"01134": "hello there.",
 	1134: "turn me upside down you heathen.",
+	50208: "yeah they are a bunch of bozos",
+	53045: "nike, adidas, reebok but never attack force.",
 };
 
 const easterEggResponses = (code) => {
@@ -17,8 +19,6 @@ const easterEggResponses = (code) => {
 const displayFlash = (event) => {
 	const buttonPress = event.currentTarget;
 	const displayScreen = document.querySelector(".display");
-
-	// when a button is pressed the display glows slightly, and the number lights up.
 
 	displayScreen.classList.add("displayFlash");
 	setTimeout(() => displayScreen.classList.remove("displayFlash"), 100);
@@ -79,7 +79,7 @@ const parseOperators = (num1, operator, num2, operator2) => {
 	exponentialCheck(result, operator2);
 };
 
-const handleZeroInputs = (buttonInput, operators) => {
+const handleZeroInputs = (buttonInput) => {
 	if (buttonInput === "-") {
 		updateDisplay(buttonInput);
 	} else if (!isNaN(buttonInput)) {
@@ -109,32 +109,25 @@ const handleTwoInputs = (display, buttonInput) => {
 };
 
 const handleThreeInputs = (display, thirdInput, buttonInput, displayItems) => {
-	if (thirdInput === "-") {
-		if (!isNaN(buttonInput)) {
-			updateDisplay(`${display.innerText}${buttonInput} `);
-		} else {
-			updateDisplay(display.innerText);
-		}
-	} else if (!isNaN(thirdInput)) {
-		if (!isNaN(buttonInput)) {
-			updateDisplay(`${display.innerText}${buttonInput} `);
-		} else {
-			parseOperators(
-				Number(displayItems[0]),
-				displayItems[1],
-				Number(displayItems[2]),
-				buttonInput
-			);
-		}
+	if ((thirdInput === "-" || !isNaN(thirdInput)) && !isNaN(buttonInput)) {
+		updateDisplay(`${display.innerText}${buttonInput} `);
+	} else if (!isNaN(thirdInput) && isNaN(buttonInput)) {
+		parseOperators(
+			Number(displayItems[0]),
+			displayItems[1],
+			Number(displayItems[2]),
+			buttonInput
+		);
 	}
 };
 
-const inputDisplay = (buttonInput, display, operators) => {
+const inputDisplay = (buttonInput) => {
+	const display = document.getElementById("display");
 	let displayItems = display.innerText.split(" ");
 
 	if (buttonInput !== "C") {
 		if (displayItems.length === 1 && displayItems[0] === "") {
-			handleZeroInputs(buttonInput, operators);
+			handleZeroInputs(buttonInput);
 		} else if (displayItems.length === 1 && displayItems[0] !== "") {
 			handleOneInputs(buttonInput, displayItems[0]);
 		} else if (displayItems.length === 2) {
@@ -160,26 +153,22 @@ const clearDisplayCheck = (buttonInput) => {
 };
 
 const handleButtonPress = (event) => {
-	//handleClick Variables
-
 	const buttonInput = event.target.innerText;
-	const display = document.getElementById("display");
-	const operators = ["=", "-", "x", "+", "÷"];
 
 	clearDisplayCheck(buttonInput);
 	displayFlash(event);
-	inputDisplay(buttonInput, display, operators);
+	inputDisplay(buttonInput);
 };
 
 //This adds an event listener for all the buttons in the arr "buttons"
-const addEventListener = () => {
+const addEventListeners = () => {
 	const buttons = document.querySelectorAll("button");
 	buttons.forEach((button) => {
 		button.addEventListener("click", handleButtonPress);
 	});
 };
 
-addEventListener();
+addEventListeners();
 
 //Upgrades to attempt:
 // round numbers to 2 decimal points?
